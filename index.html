@@ -12,11 +12,11 @@
             max-width: 900px;
             margin: auto;
         }
-        
+
         .playable-buttons {
             margin-left: auto;
         }
-        
+
         .playable-code {
             width: 900px;
         }
@@ -27,19 +27,28 @@
     <!-- Learn about this code on MDN: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale -->
     <article>
         <canvas id="canvas" width="900" height="480" class="playable-canvas"></canvas>
-        <div class="playable-buttons">
+        <div class="change-button">
+            <input id="time" placeholder="definir tempo"/>
+            <select id="curve">
+                <option value="" disabled selected>Selecione a curva</option>
+                <option value="bazier">Bazier</option>
+                <option value="hermite">Hermite</option>
+            </select>
+            <input id="change" type="button" value="Change" />
+
             <input id="save" type="button" value="Save" />
+            <p id="error"></p>
         </div>
+
         <textarea id="code" class="playable-code">
-p0 = [-250,-100]; 
-p1 = [250,140]; 
-p2 = [-1200,+150]; 
-p3 = [-300,-525]; 
-setHermite(p0,p1,p2,p3);
-  </textarea>
+        </textarea>
 
         <script src="gl-matrix.js"></script>
         <script src="script.js"></script>
+        <script>
+            var code_text = document.getElementById("code");
+            code_text.value = "p0 = [-150,120];\np1 = [-200,-120];\np2 = [-1200,+150];\np3 = [-300,-525];;\nsetHermite(p0,p1,p2,p3);\n\np0 = [250,100];;\np1 = [200,150];;\np2 = [200,-150];;\np3 = [-200,-225];;\nsetBezier(p0,p1,p2,p3);"
+        </script>
     </article>
 </body>
 
